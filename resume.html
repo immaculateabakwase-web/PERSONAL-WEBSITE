@@ -4,163 +4,740 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Resume - Personal Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <title>Resume - Immaculate Abakwase</title>
+  <meta name="description" content="Software Engineer & UI/UX Designer - Immaculate Abakwase">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0e0d;
+      --paper: #f7f4ef;
+      --accent: #e20368;
+      --accent-light: #e8d5c4;
+      --muted: #7a7570;
+      --rule: #d9d3cb;
+      --video-bg: #1a1714;
+    }
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- =======================================================
-  * Template Name: Personal
-  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-  * Updated: Mar 05 2025 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--paper);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAVBAR (from index.html) ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #0c0303;
+      padding: 25px;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #e20368;
+      font-size: 25px;
+    }
+
+    .logo span {
+      color: #e20368;
+    }
+
+    .links {
+      display: flex;
+      list-style: none;
+    }
+
+    .links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 20px;
+    }
+
+    .links a.active {
+      font-weight: bold;
+    }
+
+    .hamburg {
+      display: none;
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hamburg {
+        display: block;
+      }
+
+      .links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #0c0303;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 10px 0;
+        z-index: 100;
+        margin-right: 20px;
+      }
+
+      .links.active {
+        display: flex;
+      }
+
+      .links li {
+        margin: 10px 0;
+        text-align: center;
+      }
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      margin-top: 64px;
+      padding: 5rem 5vw 3rem;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .page-hero h1 span {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero-summary {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 540px;
+      border-left: 2px solid var(--accent);
+      padding-left: 1.25rem;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 0;
+      min-height: 100vh;
+    }
+
+    .col-left {
+      padding: 3rem 3rem 3rem 5vw;
+      border-right: 1px solid var(--rule);
+    }
+
+    .col-right {
+      padding: 3rem 5vw 3rem 3rem;
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── CONTACT BLOCK ── */
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .contact-list li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .contact-list strong {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .contact-list a {
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .contact-list a:hover { text-decoration: underline; }
+
+    /* ── SKILLS BLOCK ── */
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 2.5rem;
+    }
+    .skill-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      background: white;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .skill-tag:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* ── EDUCATION BLOCK ── */
+    .edu-item {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+    .edu-item .school {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+    .edu-item .years {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+    .edu-item p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── REFERENCES ── */
+    .ref-item {
+      background: white;
+      border: 1px solid var(--rule);
+      padding: 1rem 1.1rem;
+      border-radius: 4px;
+    }
+    .ref-item h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .ref-item p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── EXPERIENCE ENTRIES ── */
+    .exp-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .exp-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .exp-date {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: white;
+      background: var(--accent);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .exp-company {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-item ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .exp-item ul li {
+      font-size: 0.84rem;
+      color: var(--muted);
+      padding-left: 1rem;
+      position: relative;
+    }
+    .exp-item ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 0.2em;
+    }
+
+    /* ── WEBSITES SUB-LIST ── */
+    .websites-list {
+      margin-top: 0.5rem;
+      padding-left: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .websites-list a {
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .websites-list a:hover { text-decoration: underline; }
+
+    /* ── DEMO VIDEO SECTION ── */
+    .demo-block {
+      margin-top: 1.25rem;
+      background: var(--video-bg);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .demo-block-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .demo-block-label::before {
+      content: '▶';
+      font-size: 0.55rem;
+      background: var(--accent);
+      color: white;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 1px;
+      flex-shrink: 0;
+    }
+
+    .demo-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .demo-link-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .demo-link-row .demo-title {
+      font-size: 1rem;
+      color: #a09890;
+      flex-shrink: 0;
+      min-width: 90px;
+    }
+
+    .demo-link-row a {
+      font-size: 1rem;
+      color: #e09060;
+      text-decoration: none;
+      border-bottom: 1px dashed #5a3a28;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .demo-link-row a:hover {
+      color: white;
+      border-color: white;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: #8a857f;
+      padding: 1.5rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── PRINT / SCROLL ── */
+    @media (max-width: 860px) {
+      .page-hero { grid-template-columns: 1fr; }
+      .cv-grid { grid-template-columns: 1fr; }
+      .col-left { border-right: none; border-bottom: 1px solid var(--rule); }
+      nav ul { gap: 1rem; }
+    }
+
+    @media print {
+      header, footer { display: none; }
+      body { background: white; }
+      .page-hero { margin-top: 0; }
+    }
+
+    /* ── ENTRANCE ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-hero h1        { animation: fadeUp 0.7s ease both; }
+    .hero-summary        { animation: fadeUp 0.7s 0.15s ease both; }
+    .col-left  > *       { animation: fadeUp 0.6s 0.25s ease both; }
+    .col-right > *       { animation: fadeUp 0.6s 0.35s ease both; }
+    /* Video modal styles */
+    .video-modal { display: none; position: fixed; inset: 0; z-index: 1100; align-items: center; justify-content: center; }
+    .video-modal.open { display: flex; }
+    .video-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
+    .video-modal-content { position: relative; z-index: 2; width: min(960px, 95%); background: transparent; padding: 1rem; }
+    .video-modal-close { position: absolute; right: 10px; top: -6px; z-index: 3; background: rgba(0,0,0,0.5); color: #fff; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; }
+    .video-modal video { width: 100%; height: auto; border-radius: 6px; background: #000; }
+  </style>
 </head>
 
-<body class="resume-page">
+<body>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <div class="logo">Immaculate   <span>Abakwase</span></div>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="resume.html" class="active">Resume</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
+  <!-- ── HEADER ── -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Immaculate <span>Abakwase</span></div>
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html" class="active">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <i class="fa-solid fa-bars hamburg"></i>
     </div>
-  </header>
+  </nav>
 
-  <main class="main">
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <h1>
+      Curriculum<br>
+      <span>Vitae</span>
+    </h1>
+    <p class="hero-summary">
+      Software Engineer &amp; UI/UX Designer who can learn any framework required for a project.
+      Proficient in full-stack development, Frontend engineering, and WordPress customization.
+      Skilled in building intuitive, scalable, and visually appealing digital experiences that
+      bridge the gap between design and development.
+    </p>
+  </div>
 
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>RESUME</h1>
-              <p class="mb-0">I am a Devoted Software Engineer and UI/UX Designer dedicated to crafting intuitive and efficient digital experiences. With expertise in technologies like React Native, JavaScript, Node.js, Express.js, and Pug, I specialize in developing seamless web applications with a strong focus on functionality and design. My attention to detail ensures that every project I work on is both user-friendly and visually appealing.</p>
+  <!-- ── MAIN CONTENT ── -->
+  <div class="cv-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
+
+      <!-- Contact -->
+      <p class="section-label">Contact</p>
+      <ul class="contact-list">
+        <li>
+          <strong>Location</strong>
+          Ntinda, Kampala, Uganda
+        </li>
+        <li>
+          <strong>Phone</strong>
+          +256 744 126 013 / +256 704 196 610
+        </li>
+        <li>
+          <strong>Email</strong>
+          <a href="mailto:immaculateabakwase@gmail.com">immaculateabakwase@gmail.com</a>
+        </li>
+        <li>
+          <strong>LinkedIn</strong>
+          <a href="https://www.linkedin.com/in/immaculateabakwase/" target="_blank">linkedin.com/in/immaculateabakwase</a>
+        </li>
+        <li>
+          <strong>GitHub</strong>
+          <a href="https://github.com/ImmaculateAbakwase" target="_blank">github.com/ImmaculateAbakwase</a>
+        </li>
+      </ul>
+
+      <!-- Skills -->
+      <p class="section-label">Skills</p>
+      <div class="skills-cloud">
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">React.js</span>
+        <span class="skill-tag">Vue.js</span>
+        <span class="skill-tag">React Native</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express.js</span>
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">WordPress</span>
+        <span class="skill-tag">Pug</span>
+        <span class="skill-tag">Expo</span>
+        <span class="skill-tag">Basic Python</span>
+        <span class="skill-tag">RESTful APIs</span>
+        <span class="skill-tag">Git / GitHub</span>
+        <span class="skill-tag">Scrum</span>
+        <span class="skill-tag">Agile</span>
+        <span class="skill-tag">UI/UX Design</span>
+        <span class="skill-tag">WooCommerce</span>
+      </div>
+
+      <!-- Education -->
+      <p class="section-label">Education</p>
+
+      <div class="edu-item">
+        <h4>BSc. Artificial Intelligence &amp; Data Science</h4>
+        <p class="school">Victoria University</p>
+        <p class="years">In Progress</p>
+      </div>
+
+      <div class="edu-item">
+        <h4>Certificate in Software Engineering</h4>
+        <p class="school">Refactory Academy</p>
+        <p class="years">Completed Dec 2024</p>
+        <p>Backend development, API integration, full-stack best practices and agile collaboration. Capstone: e-commerce inventory system with role-based access control.</p>
+      </div>
+
+      <div class="edu-item">
+        <h4>Uganda Advanced Certificate of Education</h4>
+        <p class="school">Oxford Secondary School</p>
+        <p class="years">Completed Dec 2023</p>
+      </div>
+
+      <!-- References -->
+      <p class="section-label">References</p>
+      <div class="ref-item">
+        <h4>Vivian Ahereza</h4>
+        <p>HR — Enigma Kreative Limited<br>+256 704 187 140</p>
+      </div>
+
+    </div><!-- /col-left -->
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-right">
+
+      <p class="section-label">Professional Experience</p>
+
+      <!-- ── LWEGATECH ── -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <h4>Front End Developer</h4>
+          <span class="exp-date">Nov 2025 – Feb 2026</span>
+        </div>
+        <p class="exp-company">Lwegatech Limited, Kampala</p>
+        <ul>
+          <li>
+            Built the frontend for <strong>KFLIX</strong>, an entertainment platform for movies, music, games, creator channels, and live podcast sessions.
+          </li>
+          <li>
+            Used Vue.js to create reusable component libraries, reducing future development time and effort.
+          </li>
+          <li>
+            Leveraged Git for version control and seamless team collaboration across features.
+          </li>
+          <li>
+            Designed and developed client WordPress + PHP websites:
+            <div class="websites-list">
+              <a href="https://lwegatech.net/mabira" target="_blank" rel="noopener noreferrer">↗ Mabira Forest Camp — lwegatech.net/mabira</a>
+              <a href="https://lwegatech.net/agrotek" target="_blank" rel="noopener noreferrer">↗ Agrotek Limited (agricultural company) — lwegatech.net/agrotek</a>
+              <a href="https://lwegatech.net/kfc" target="_blank" rel="noopener noreferrer">↗ KINGS Football Club (USA) — lwegatech.net/kfc</a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- DEMO VIDEO BLOCK – LWEGATECH -->
+        <div class="demo-block">
+          <div class="demo-block-label">Project Demo Video</div>
+          <div class="demo-links">
+            <div class="demo-link-row">
+              <span class="demo-title">KFC Site</span>
+              <a href="#" class="demo-open" data-src="assets/css/ecommerce-app.mp4">▶ Watch Demo &rarr;</a>
             </div>
           </div>
         </div>
       </div>
-    </div><!-- End Page Title -->
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Summary</h3>
-
-            <div class="resume-item pb-0">
-              <h4>Immaculate Abakwase</h4>
-              <p><em>
-                Enthusiastic Software Engineer, I merge functionality with aesthetics to create seamless digital experiences. I focus on building robust and scalable backend systems while ensuring the frontend is intuitive, visually engaging, and accessible. By understanding user needs, I design and develop solutions that enhance satisfaction, drive retention, and contribute to product success. My approach bridges the gap between design and development, ensuring a cohesive and high-quality end product.
-              </em></p>
-              <ul>
-                <li><strong>Location:</strong> Kampala, Uganda</li>
-                <li><strong>Phone:</strong> (+256) 704 196 610</li>
-                <li><strong>Email:</strong> <a href="nowenakazibwe7@gmail.com">nowenakazibwe7@gmail.com</a></li>
-                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/immaculateabakwase/" target="_blank">https://www.linkedin.com/in/immaculateabakwase/</a></li>
-                <li><strong>GitHub:</strong> <a href="http://github.com/ImmaculateAbakwase" target="_blank">http://github.com/ImmaculateAbakwase</a></li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Certificate in Software Engineering</h4>
-              <h5>2024 - 2025</h5>
-              <p><em>Refactory Academy, Uganda</em></p>
-              <p>Acquired knowledge in software engineering, including backend development, API integration, and best practices in coding and collaboration.</p>
-              <ul>
-                <li>Developed an e-commerce system for procurement, sales, and digital data storage.</li>
-                <li>Implemented secure user authentication and role-based access control.</li>
-                <li>Designed and integrated RESTful APIs for seamless data management.</li>
-                <li>Utilized Node.js, Express.js, and MongoDB for backend development.</li>
-                <li>Built a responsive frontend using React and Bootstrap to enhance user experience.</li>
-                <li>Optimized system performance by improving database queries and data handling.</li>
-              </ul>
-            </div><!-- End Resume Item -->
-  
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Full Stack Developer</h4>
-              <h5>2024</h5>
-              <p><em>Refactory Academy, Kampala </em></p>
-              <ul>
-                <li>Contributed to the development of an internal inventory and sales management system for a wholesale produce distributor.</li>
-                <li>Worked on streamlining procurement, sales tracking, and inventory updates through custom-built software solutions.</li>
-                <li>Created a user-friendly dashboard for managers to access real-time sales, stock levels, and credit sales reports.</li>
-                <li>Collaborated with a team to integrate automatic receipt generation and validation for data accuracy in sales and procurement processes.</li>
-                <li>Ensured seamless connection between different branches by providing centralized control of product data and sales information.</li>
-                <li>Used Node.js and MongoDB to develop backend services, focusing on performance, scalability, and reliability.</li>
-                <li>Optimized user interfaces for ease of navigation and responsive design across multiple devices.</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Developer Intern</h4>
-              <h5>2025</h5>
-              <p><em>Enigma Kreative Limited, Uganda</em></p>
-              <ul>
-                <li>Developing a dynamic and user-friendly eCommerce mobile application using React Native and Expo.</li>
-                <li>Ensuring efficient data flow by preserving form data and integrating smooth navigation between screens.</li>
-                <li>Building a visually appealing and responsive vendor dashboard to enhance user experience.</li>
-                <li>Integrating APIs for product storage, retrieval, and secure transactions.</li>
-                <li>Designing intuitive UI components to simplify vendor registration and product listing.</li>
-                <li>Collaborating with designers and developers to align app functionality with business goals.</li>
-              </ul>
-            </div><!-- End Resume Item -->
-            
-            
-
-          </div>
-
+      <!-- ── ENIGMA KREATIVE ── -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <h4>Mobile App Developer</h4>
+          <span class="exp-date">Feb 2025 – Nov 2025</span>
         </div>
+        <p class="exp-company">Enigma Kreative Limited, Uganda</p>
+        <ul>
+          <li>
+            Developed a user-friendly eCommerce mobile application using React Native, Expo, and Python.
+          </li>
+          <li>
+            Ensured efficient state management and smooth navigation between screens for a seamless user experience.
+          </li>
+          <li>
+            Built a visually appealing vendor dashboard with real-time product updates and analytics.
+          </li>
+          <li>
+            Integrated APIs for product management, secure transactions, and user authentication.
+          </li>
+          <li>
+            Collaborated with UI/UX designers to create intuitive and accessible interface components for both vendors and customers.
+          </li>
+        </ul>
 
+        <!-- DEMO VIDEO BLOCK – ENIGMA KREATIVE -->
+        <div class="demo-block">
+          <div class="demo-block-label">Project Demo Videos</div>
+          <div class="demo-links">
+            <div class="demo-link-row">
+              <span class="demo-title">eCommerce App</span>
+              <a href="#" class="demo-open" data-src="assets/css/ecommerce-app.mp4">▶ Watch Demo &rarr;</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-    </section><!-- /Resume Section -->
+      <!-- ── OUTDOORSY UGANDA ── -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <h4>Web Developer</h4>
+          <span class="exp-date">Jan 2025 – Mar 2025</span>
+        </div>
+        <p class="exp-company">Outdoorsy Uganda</p>
+        <ul>
+          <li>
+            Led the development and customization of a WordPress CMS for an outdoor adventure platform, enhancing the company's online presence.
+          </li>
+          <li>
+            Designed and implemented a real-time booking system to manage activity reservations, availability, and customer data efficiently.
+          </li>
+          <li>
+            Extended WordPress functionality through custom PHP coding, plugin integration, and theme adjustments to meet specific client needs.
+          </li>
+          <li>
+            Configured and optimized MySQL databases to handle user information, bookings, and inventory securely.
+          </li>
+          <li>
+            Ensured cross-device responsive design and seamless user navigation, improving customer engagement.
+          </li>
+        </ul>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:0.8rem;letter-spacing:0.04em;">
+          <strong style="color:var(--ink)">Stack:</strong> WordPress · PHP · MySQL · WooCommerce · Travelami Theme
+        </p>
+      </div>
 
-  </main>
+      <!-- ── REFACTORY ── -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <h4>Full Stack Developer</h4>
+          <span class="exp-date">Jun 2024 – Dec 2024</span>
+        </div>
+        <p class="exp-company">Refactory Academy, Kampala</p>
+        <ul>
+          <li>
+            Developed a comprehensive internal inventory and sales management system for a wholesale produce distributor.
+          </li>
+          <li>
+            Implemented secure user authentication and role-based access control to manage staff permissions across branches.
+          </li>
+          <li>
+            Designed RESTful APIs for efficient data retrieval and updates between backend and frontend systems.
+          </li>
+          <li>
+            Built a responsive, interactive dashboard using React.js and Bootstrap for real-time tracking of sales, stock levels, and credit reports.
+          </li>
+          <li>
+            Optimized database queries and backend logic in Node.js and MongoDB to improve performance and scalability.
+          </li>
+          <li>
+            Collaborated in an Agile team to streamline procurement, sales tracking, and inventory management.
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- /col-right -->
+
+  </div><!-- /cv-grid -->
+
 
   <footer id="footer" class="footer dark-background">
     <div class="container">
@@ -194,6 +771,60 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Video modal markup + behaviour -->
+  <div id="video-modal" class="video-modal" aria-hidden="true">
+    <div class="video-modal-backdrop" id="video-modal-backdrop"></div>
+    <div class="video-modal-content" role="dialog" aria-modal="true">
+      <button class="video-modal-close" id="video-modal-close" aria-label="Close">✕</button>
+      <video controls id="demo-video"></video>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const modal = document.getElementById('video-modal');
+      const backdrop = document.getElementById('video-modal-backdrop');
+      const closeBtn = document.getElementById('video-modal-close');
+      const videoElem = document.getElementById('demo-video');
+
+      function openModal(src){
+        videoElem.src = src;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        setTimeout(()=>{ videoElem.play().catch(()=>{}); }, 120);
+      }
+
+      function closeModal(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        try{ videoElem.pause(); }catch(e){}
+        videoElem.removeAttribute('src');
+        videoElem.load();
+      }
+
+      document.querySelectorAll('.demo-open').forEach(function(el){
+        el.addEventListener('click', function(e){
+          e.preventDefault();
+          const src = el.getAttribute('data-src');
+          if(src) openModal(src);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+    })();
+  </script>
+  <script>
+    (function(){
+      var btn = document.querySelector('.hamburg');
+      if(btn) btn.addEventListener('click', function(){
+        var links = document.querySelector('.links');
+        if(links) links.classList.toggle('active');
+      });
+    })();
+  </script>
 
 </body>
 
