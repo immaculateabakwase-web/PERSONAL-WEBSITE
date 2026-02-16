@@ -6,6 +6,9 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Resume - Immaculate Abakwase</title>
   <meta name="description" content="Software Engineer & UI/UX Designer - Immaculate Abakwase">
+  <!-- Favicons -->
+  <link href="assets/img/person/immy.jpg" rel="icon">
+  <link href="assets/img/person/immy.jpg" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -475,6 +478,20 @@
     .video-modal-content { position: relative; z-index: 2; width: min(960px, 95%); background: transparent; padding: 1rem; }
     .video-modal-close { position: absolute; right: 10px; top: -6px; z-index: 3; background: rgba(0,0,0,0.5); color: #fff; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; }
     .video-modal video { width: 100%; height: auto; border-radius: 6px; background: #000; }
+    /* Force-hide any GLightbox UI that may be injected into the page */
+    .glightbox-container, #glightbox-body, .goverlay, .gcontainer { display: none !important; visibility: hidden !important; }
+
+    /* Simple custom image lightbox */
+    .image-lightbox { position: fixed; inset: 0; display: none; z-index: 1200; align-items: center; justify-content: center; }
+    .image-lightbox.open { display: flex; }
+    .image-lightbox .il-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.85); }
+    .image-lightbox .il-content { position: relative; z-index: 2; max-width: 92%; max-height: 92%; display:flex; align-items:center; gap:12px; }
+    .image-lightbox .il-image { max-width: calc(100vw - 160px); max-height: calc(100vh - 120px); border-radius:6px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    .image-lightbox .il-close, .image-lightbox .il-prev, .image-lightbox .il-next { position: absolute; background: rgba(0,0,0,0.5); color: #fff; border: none; padding: 10px 14px; border-radius: 6px; cursor: pointer; }
+    .image-lightbox .il-close { right: 14px; top: 12px; font-size: 18px; }
+    .image-lightbox .il-prev { left: 10px; top: 50%; transform: translateY(-50%); font-size: 26px; }
+    .image-lightbox .il-next { right: 10px; top: 50%; transform: translateY(-50%); font-size: 26px; }
+    .image-lightbox .il-caption { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); color: #eee; font-size: 0.95rem; max-width: 90%; text-align:center; }
   </style>
 </head>
 
@@ -627,16 +644,36 @@
           </li>
         </ul>
 
-        <!-- DEMO VIDEO BLOCK – LWEGATECH -->
-        <!-- <div class="demo-block">
-          <div class="demo-block-label">Project Demo Video</div>
-          <div class="demo-links">
-            <div class="demo-link-row">
-              <span class="demo-title">KFC Site</span>
-              <a href="#" class="demo-open" data-src="assets/css/ecommerce-app.mp4">▶ Watch Demo &rarr;</a>
-            </div>
+        <!-- DEMO IMAGES BLOCK – LWEGATECH (KFLIX) -->
+        <div class="demo-block">
+          <a href="assets/img/login.png" class="demo-block-label" title="KFLIX demo interfaces" target="_blank" rel="noopener noreferrer">KFLIX DEMO INTERFACES</a>
+          <div class="demo-links" style="display:none;" aria-hidden="true">
+            <a href="assets/img/login.png" title="KFLIX - login">
+              <img src="assets/img/login.png" alt="KFLIX login" style="width:120px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.06)">
+            </a>
+            <a href="assets/img/dashboard.png" title="KFLIX - dashboard">
+              <img src="assets/img/dashboard.png" alt="KFLIX dashboard" style="width:120px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.06)">
+            </a>
+            <a href="assets/img/dashboard2.png" title="KFLIX - dashboard 2">
+              <img src="assets/img/dashboard2.png" alt="KFLIX dashboard 2" style="width:120px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.06)">
+            </a>
+            <a href="assets/img/duke.png" title="KFLIX - duke">
+              <img src="assets/img/duke.png" alt="KFLIX duke" style="width:120px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.06)">
+            </a>
+            <a href="assets/img/upload.png" title="KFLIX - upload">
+              <img src="assets/img/upload.png" alt="KFLIX upload" style="width:120px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.06)">
+            </a>
+            <a href="assets/img/users-list.png" title="KFLIX - users list">
+              <img src="assets/img/users-list.png" alt="KFLIX users list" style="width:120px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.06)">
+            </a>
+            <a href="assets/img/users.png" title="KFLIX - users">
+              <img src="assets/img/users.png" alt="KFLIX users" style="width:120px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.06)">
+            </a>
+            <a href="assets/img/movies.png" title="KFLIX - movies">
+              <img src="assets/img/movies.png" alt="KFLIX movies" style="width:120px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,0.06)">
+            </a>
           </div>
-        </div> -->
+        </div>
       </div>
 
       <!-- ── ENIGMA KREATIVE ── -->
@@ -814,6 +851,86 @@
       closeBtn.addEventListener('click', closeModal);
       backdrop.addEventListener('click', closeModal);
       document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+    })();
+  </script>
+  <script>
+    // Custom image lightbox: open with prev/next controls (bypass GLightbox)
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        try{
+          document.body.classList.remove('glightbox-open','gscrollbar-fixer');
+          document.querySelectorAll('.glightbox-container').forEach(function(el){ el.style.display = 'none'; el.setAttribute('aria-hidden','true'); });
+        }catch(e){}
+      });
+
+      // build lightbox markup and append to body
+      const lb = document.createElement('div');
+      lb.id = 'image-lightbox';
+      lb.className = 'image-lightbox';
+      lb.setAttribute('aria-hidden','true');
+      lb.innerHTML = `
+        <div class="il-overlay"></div>
+        <div class="il-content">
+          <button class="il-close" aria-label="Close">✕</button>
+          <button class="il-prev" aria-label="Previous">‹</button>
+          <img src="" alt="" class="il-image">
+          <button class="il-next" aria-label="Next">›</button>
+          <div class="il-caption"></div>
+        </div>
+      `;
+      document.body.appendChild(lb);
+
+      const ilOverlay = lb.querySelector('.il-overlay');
+      const ilClose = lb.querySelector('.il-close');
+      const ilPrev = lb.querySelector('.il-prev');
+      const ilNext = lb.querySelector('.il-next');
+      const ilImage = lb.querySelector('.il-image');
+      const ilCaption = lb.querySelector('.il-caption');
+
+      let currentGallery = [];
+      let currentIndex = 0;
+
+      function openLightbox(urls, index){
+        currentGallery = urls.slice();
+        currentIndex = index || 0;
+        ilImage.src = currentGallery[currentIndex] || '';
+        ilCaption.textContent = '';
+        if(currentGallery.length > 1){ ilPrev.style.display = 'block'; ilNext.style.display = 'block'; } else { ilPrev.style.display = 'none'; ilNext.style.display = 'none'; }
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden','false');
+      }
+
+      function closeLightbox(){
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden','true');
+        ilImage.removeAttribute('src');
+      }
+
+      function showIndex(i){
+        if(!currentGallery.length) return;
+        currentIndex = (i + currentGallery.length) % currentGallery.length;
+        ilImage.src = currentGallery[currentIndex];
+      }
+
+      ilOverlay.addEventListener('click', closeLightbox);
+      ilClose.addEventListener('click', closeLightbox);
+      ilPrev.addEventListener('click', function(){ showIndex(currentIndex - 1); });
+      ilNext.addEventListener('click', function(){ showIndex(currentIndex + 1); });
+      document.addEventListener('keydown', function(e){ if(lb.classList.contains('open')){ if(e.key === 'Escape') closeLightbox(); if(e.key === 'ArrowLeft') showIndex(currentIndex -1); if(e.key === 'ArrowRight') showIndex(currentIndex +1); }});
+
+      // wire the demo label(s)
+      const labels = document.querySelectorAll('.demo-block .demo-block-label');
+      labels.forEach(function(label){
+        label.addEventListener('click', function(e){
+          const block = label.closest('.demo-block');
+          if(!block) return;
+          const anchors = Array.from(block.querySelectorAll('.demo-links a'));
+          if(!anchors || anchors.length === 0) return;
+          e.preventDefault();
+          const urls = anchors.map(a => a.href);
+          openLightbox(urls, 0);
+        });
+      });
     })();
   </script>
   <script>
